@@ -1,37 +1,37 @@
 {% extends "layout.html" %} {% block content %}
-<form
-  action="/uploaded"
-  id="form_id"
-  method="post"
-  enctype="multipart/form-data"
->
-  <div class="row mb-5">
-    <div class="col">
-      <div class="input-group rounded">
-        <input
-          type="text"
-          class="form-control rounded"
-          name="disc"
-          placeholder="Enter title or description of video"
-        />
+<section>
+  <form
+    action="/uploaded"
+    id="form_id"
+    method="post"
+    enctype="multipart/form-data"
+    class="w-full"
+  >
+    <div class="row">
+      <div class="col">
+        <div class="input-group rounded">
+          <span class="input-group-addon" id="search-addon">
+            <i class="fa fa-search fa-lg fa-fw" aria-hidden="true"></i>&nbsp;
+          </span>
+          <input
+            type="text"
+            class="form-control rounded"
+            name="disc"
+            placeholder="Enter Query"
+            required
+          />
+        </div>
+      </div>
+      <div class="drop-zone">
+        <span class="drop-zone__prompt">Drop file here or click to upload</span>
+        <input type="file" name="myFile" class="drop-zone__input" />
+      </div>
+      <input type="file" name="file" id="fileInput" style="display: none" />
+      <div class="col col-lg-2">
+        <input type="submit" class="btn btn-primary" value="Detect" />
       </div>
     </div>
-    <div class="col-md-auto">
-      <label for="choose_file" class="btn btn-primary"
-        >Choose file
-        <input
-          type="file"
-          id="choose_file"
-          name="video_to_upload"
-          style="display: none"
-          required
-          multiple
-        /><i class="fa fa-cloud-upload fa-fw" aria-hidden="true"></i
-        >&nbsp;</label
-      >
-</div>
-    <div class="col col-lg-2">
-      <input type="submit" class="btn btn-primary" value="Upload" />
-    </div>
-  </div>
   </form>
+</section>
+
+{% endblock content %}
