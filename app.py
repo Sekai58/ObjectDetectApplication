@@ -2,6 +2,7 @@ from flask import Flask,request, render_template,redirect,url_for;
 from werkzeug.utils import secure_filename
 import os
 
+import objectdetection
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'C:\\Users\\zeroa\\amrita\\test_prj\\objectDetect\\static\\images'
@@ -18,16 +19,11 @@ def upload():
 
 @app.route("/uploaded",methods=['GET','POST'])
 def uploaded():
-    sentence = request.form['disc']
-    file = request.files.getlist('myFile')
+    file = request.files['myFile']
     print(file,sentence)
-    path = []
-    files = []
-    for f in file:
-        filename = secure_filename(f.filename)
-        #path.append("images/" + f.filename)
-        files.append(f.filename)
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'],file.filename))
+    label, cordinate = objectdetection.getCordinates( file.filename)
+    print(label,cordinate)
     return redirect(url_for('upload'))
 
 if __name__ == '__main__':

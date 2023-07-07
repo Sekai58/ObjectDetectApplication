@@ -33,7 +33,7 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="/">ObjectDetection</a>
+          <div class="navbar-brand mr-4">ObjectDetection</div>
           <button
             class="navbar-toggler"
             type="button"
@@ -46,9 +46,14 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav ">
+              <a class="nav-item nav-link" href="/"
+                >Home</a
+              >
+            </div>
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{{ url_for('upload') }}"
-                >Detect</a
+                >Demo</a
               >
             </div>
           </div>
